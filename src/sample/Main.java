@@ -6,16 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/** @author Luis Hernandez */
+/**
+ * @author Luis Hernandez
+ */
 public class Main extends Application {
 
   /**
    * The start method is the starting point of a JavaFX program. This start method sets the title.
    *
-   * @brief
    * @author Luis Hernandez
-   * @param primaryStage
-   * @throws Exception
+   * @param primaryStage Set the GUI program to be viewed
+   * @throws Exception throw an exception that would cause the code to crash
    */
   // ctrl alt L does automatic formatting
   @Override
@@ -29,5 +30,6 @@ public class Main extends Application {
   public static void main(String[] args) {
 
     launch(args);
+
   }
 }
