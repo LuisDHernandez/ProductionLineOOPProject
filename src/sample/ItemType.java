@@ -5,6 +5,6 @@ public enum ItemType {
   // AU, VI, AM, VM
   AUDIO,
   VISUAL,
-  AUDIOMOBILE,
-  VISUALMOBILE;
+  AUDIO_MOBILE,
+  VISUAL_MOBILE;
 }
