@@ -11,14 +11,15 @@ import javafx.scene.control.ComboBox;
 
 /** @author Luis Hernandez 9/20/2019 */
 public class Controller {
-  /** */
   private Connection conn;
 
-  static final String JDBC_DRIVER = "org.h2.Driver";
-  static final String DB_URL = "jdbc:h2:./res/ProdLineDB";
+  static final String JDBC_DRIVER = "org.h2.Driver"; // could be private but chose not to
+  static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
 
+  /** create comboBox object to hold quantity amount of items */
   @FXML private ComboBox<Integer> cbxQuantity;
 
+  /** @param event when the button is pressed it will add input to Product DB */
   @FXML
   void btnAddProduct(ActionEvent event) {
     try (Statement statement = conn.createStatement()) {
@@ -30,12 +31,16 @@ public class Controller {
     }
   }
 
+  /**
+   * @param event this action records the product & prints out to the screen that it was successful
+   */
   @FXML
   void btnRecordProduction(ActionEvent event) {
 
     System.out.println("Product was recorded");
   }
 
+  /** Initialize the Database and add items to combobox */
   void Initialize() {
 
     //  Database credential
@@ -53,10 +58,10 @@ public class Controller {
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
 
-    } catch (SQLException e) {
+    } catch (SQLException e) { // sql exception needed
       e.printStackTrace();
     }
-    cbxQuantity.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
+    cbxQuantity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     cbxQuantity.setEditable(true);
     cbxQuantity.getSelectionModel().selectFirst();
   }
