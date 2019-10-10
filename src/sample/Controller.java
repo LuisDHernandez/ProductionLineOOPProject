@@ -1,5 +1,10 @@
 package sample;
 
+import static sample.ItemType.AUDIO;
+import static sample.ItemType.AUDIO_MOBILE;
+import static sample.ItemType.VISUAL;
+import static sample.ItemType.VISUAL_MOBILE;
+import sample.ItemType.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,7 +22,8 @@ public class Controller {
   static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
 
   /** create comboBox object to hold quantity amount of items */
-  @FXML private ComboBox<Integer> cbxQuantity;
+  @FXML ComboBox<ItemType> cbxitemType;
+  @FXML ComboBox<Integer> cbxQuantity;
 
   /** @param event when the button is pressed it will add input to Product DB */
   @FXML
@@ -41,7 +47,7 @@ public class Controller {
   }
 
   /** Initialize the Database and add items to combobox */
-  void Initialize() {
+  void initialize() {
 
     //  Database credential
     conn = null;
@@ -64,5 +70,7 @@ public class Controller {
     cbxQuantity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     cbxQuantity.setEditable(true);
     cbxQuantity.getSelectionModel().selectFirst();
+    cbxitemType.getItems().addAll(AUDIO, VISUAL, AUDIO_MOBILE, VISUAL_MOBILE);
+    cbxitemType.getSelectionModel().selectFirst();
   }
 }
