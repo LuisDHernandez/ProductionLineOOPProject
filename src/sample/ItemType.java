@@ -12,5 +12,4 @@ public enum ItemType {
   ItemType(String itemCode) {
     code = itemCode;
   }
-
 }

@@ -23,6 +23,7 @@ public class Controller {
 
   /** create comboBox object to hold quantity amount of items */
   @FXML ComboBox<ItemType> cbxitemType;
+
   @FXML ComboBox<Integer> cbxQuantity;
 
   /** @param event when the button is pressed it will add input to Product DB */
