@@ -16,26 +16,23 @@ public class AudioPlayer extends Product implements MultimediaControl {
   }
 
   @Override
-  public void printItemInfo() {}
-
-  @Override
   public void play() {
     System.out.println("Playing");
   }
 
   @Override
   public void stop() {
-    System.out.println("Stopped");
+    System.out.println("Stopping");
   }
 
   @Override
   public void previous() {
-    System.out.println("Went back");
+    System.out.println("Previous");
   }
 
   @Override
   public void next() {
-    System.out.println("Skipped to next");
+    System.out.println("Next");
   }
 
   public String toString() {
@@ -47,7 +44,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
         + getType()
         + "\nSupported Audio Formats: "
         + supportedAudioFormats
-        + "\nSupported PlaylistFormat: "
+        + "\nSupported Playlist Formats: "
         + supportedPlaylistFormats;
   }
 

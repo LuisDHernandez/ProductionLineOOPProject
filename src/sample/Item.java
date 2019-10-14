@@ -7,8 +7,6 @@ public interface Item {
   // implicitly all fields in interface are public static final
   // String name = " ";
 
-  public void printItemInfo();
-
   public int getId();
 
   public void setName(String theName);
