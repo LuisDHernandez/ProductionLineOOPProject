@@ -16,7 +16,9 @@ import javafx.scene.control.ComboBox;
 
 /** @author Luis Hernandez 9/20/2019 */
 public class Controller {
+
   private Connection conn;
+  private Statement stmt;
 
   static final String JDBC_DRIVER = "org.h2.Driver"; // could be private but chose not to
   static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
@@ -29,15 +31,16 @@ public class Controller {
   /** @param event when the button is pressed it will add input to Product DB */
   @FXML
   void btnAddProduct(ActionEvent event) {
-    try (Statement statement = conn.createStatement()) {
-      statement.execute(
+
+    try {
+      stmt.execute(
           "INSERT INTO Product(type, manufacturer, name) VALUES"
               + " ( 'AUDIO', 'Apple', 'iPod' );");
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
     }
   }
-
   /**
    * @param event this action records the product & prints out to the screen that it was successful
    */
@@ -48,30 +51,33 @@ public class Controller {
   }
 
   /** Initialize the Database and add items to combobox */
-  void initialize() {
+  public void initialize() {
 
     //  Database credential
+    stmt = null;
     conn = null;
 
     try {
       // STEP 1: Register JDBC driver
       Class.forName(JDBC_DRIVER);
 
+      cbxQuantity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+      cbxQuantity.setEditable(true);
+      cbxQuantity.getSelectionModel().selectFirst();
+      cbxitemType.getItems().addAll(AUDIO, VISUAL, AUDIO_MOBILE, VISUAL_MOBILE);
+      cbxitemType.getSelectionModel().selectFirst();
+
       // STEP 2: Open a connection
       conn = DriverManager.getConnection(DB_URL);
+      stmt = conn.createStatement();
 
       // Clean-up environment
-      conn.close();
+
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
 
     } catch (SQLException e) { // sql exception needed
       e.printStackTrace();
     }
-    cbxQuantity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-    cbxQuantity.setEditable(true);
-    cbxQuantity.getSelectionModel().selectFirst();
-    cbxitemType.getItems().addAll(AUDIO, VISUAL, AUDIO_MOBILE, VISUAL_MOBILE);
-    cbxitemType.getSelectionModel().selectFirst();
   }
 }
