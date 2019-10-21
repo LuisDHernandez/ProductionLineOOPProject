@@ -5,7 +5,13 @@ import static sample.ItemType.AUDIO_MOBILE;
 import static sample.ItemType.VISUAL;
 import static sample.ItemType.VISUAL_MOBILE;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import sample.ItemType.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,19 +32,34 @@ public class Controller {
   static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
 
   /** create comboBox object to hold quantity amount of items */
-  @FXML ComboBox<ItemType> cbxitemType;
+  @FXML private TextField txtFprodName;
 
-  @FXML ComboBox<Integer> cbxQuantity;
+  @FXML private TextField txtFmanu;
+
+  @FXML private TextArea prodLogtxtA;
+
+  @FXML private ComboBox<ItemType> cbxitemType;
+
+  @FXML private TableView<?> tbvExProd;
+
+  @FXML private ListView<?> chooseProdLSV;
+
+  @FXML private ComboBox<Integer> cbxQuantity;
+
+  @FXML private Button btnrecordProd;
 
   /** @param event when the button is pressed it will add input to Product DB */
   @FXML
   void btnAddProduct(ActionEvent event) {
 
     try {
-      stmt.execute(
-          "INSERT INTO Product(type, manufacturer, name) VALUES"
-              + " ( 'AUDIO', 'Apple', 'iPod' );");
-      conn.close();
+      String query = "INSERT INTO PRODUCT(name, manufacturer, type) VALUES (?, ?, ?)";
+      PreparedStatement ps = conn.prepareStatement(query);
+      ps.setString(1, txtFprodName.getText());
+      ps.setString(2, txtFmanu.getText());
+      ps.setString(3, cbxitemType.getValue().code);
+
+
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -63,41 +84,23 @@ public class Controller {
       // STEP 1: Register JDBC driver
       Class.forName(JDBC_DRIVER);
 
-      cbxQuantity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-      cbxQuantity.setEditable(true);
-      cbxQuantity.getSelectionModel().selectFirst();
-      cbxitemType.getItems().addAll(AUDIO, VISUAL, AUDIO_MOBILE, VISUAL_MOBILE);
-      cbxitemType.getSelectionModel().selectFirst();
-
       // STEP 2: Open a connection
       conn = DriverManager.getConnection(DB_URL);
       stmt = conn.createStatement();
-      testMultimedia();
 
       // Clean-up environment
+
+      cbxQuantity.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
+      cbxQuantity.setEditable(true);
+      cbxQuantity.getSelectionModel().selectFirst();
+      cbxitemType.getItems().addAll(AUDIO,VISUAL,AUDIO_MOBILE,VISUAL_MOBILE);
+      cbxitemType.getSelectionModel().selectFirst();
 
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
 
     } catch (SQLException e) { // sql exception needed
       e.printStackTrace();
-    }
-  }
-  public static void testMultimedia() {
-    AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
-        "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
-    Screen newScreen = new Screen("720x480", 40, 22);
-    MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
-        MonitorType.LCD);
-    ArrayList<MultimediaControl> productList = new ArrayList<MultimediaControl>();
-    productList.add(newAudioProduct);
-    productList.add(newMovieProduct);
-    for (MultimediaControl p : productList) {
-      System.out.println(p);
-      p.play();
-      p.stop();
-      p.next();
-      p.previous();
     }
   }
 }
