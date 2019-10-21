@@ -4,11 +4,11 @@ package sample;
 public abstract class Product implements Item {
 
   private int id;
-  private String type;
+  private ItemType type;
   private String manufacturer;
   private String name;
 
-  public Product(String name, String manufacturer, String type) {
+  public Product(String name, String manufacturer, ItemType type) {
     this.name = name;
     this.manufacturer = manufacturer;
     this.type = type;
@@ -38,11 +38,11 @@ public abstract class Product implements Item {
     return manufacturer;
   }
 
-  public void setType(String theType) {
+  public void setType(ItemType theType) {
     type = theType;
   }
 
-  public String getType() {
+  public ItemType getType() {
     return type;
   }
 }
