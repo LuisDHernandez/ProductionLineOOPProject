@@ -30,6 +30,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
   public void next() {
     System.out.println("Next movie");
   }
+
   public String toString() {
     return "Name: "
         + getName()

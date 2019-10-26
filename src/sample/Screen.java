@@ -6,12 +6,12 @@ public class Screen implements ScreenSpec {
   int refreshRate;
   int responseTime;
 
-  public Screen(String theResolution, int theRefreshRate, int theResponseTime){
+  public Screen(String theResolution, int theRefreshRate, int theResponseTime) {
     resolution = theResolution;
     refreshRate = theRefreshRate;
     responseTime = theResponseTime;
-
   }
+
   public String toString() {
 
     return "Screen:"

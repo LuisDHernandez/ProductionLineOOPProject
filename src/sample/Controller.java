@@ -25,12 +25,6 @@ import javafx.scene.control.ComboBox;
 /** @author Luis Hernandez 9/20/2019 */
 public class Controller {
 
-  private Connection conn;
-  private Statement stmt;
-
-  static final String JDBC_DRIVER = "org.h2.Driver"; // could be private but chose not to
-  static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
-
   /** create comboBox object to hold quantity amount of items */
   @FXML private TextField txtFprodName;
 
@@ -47,31 +41,11 @@ public class Controller {
   @FXML private ComboBox<Integer> cbxQuantity;
 
   @FXML private Button btnrecordProd;
+  private Connection conn;
+  private Statement stmt;
 
-  /** @param event when the button is pressed it will add input to Product DB */
-  @FXML
-  void btnAddProduct(ActionEvent event) {
-
-    try {
-      String query = "INSERT INTO PRODUCT(name, manufacturer, type) VALUES (?, ?, ?)";
-      PreparedStatement ps = conn.prepareStatement(query);
-      ps.setString(1, txtFprodName.getText());
-      ps.setString(2, txtFmanu.getText());
-      ps.setString(3, cbxitemType.getValue().code);
-
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-  }
-  /**
-   * @param event this action records the product & prints out to the screen that it was successful
-   */
-  @FXML
-  void btnRecordProduction(ActionEvent event) {
-
-    System.out.println("Product was recorded");
-  }
+  static final String JDBC_DRIVER = "org.h2.Driver"; // could be private but chose not to
+  static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
 
   /** Initialize the Database and add items to combobox */
   public void initialize() {
@@ -90,10 +64,10 @@ public class Controller {
 
       // Clean-up environment
 
-      cbxQuantity.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
+      cbxQuantity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
       cbxQuantity.setEditable(true);
       cbxQuantity.getSelectionModel().selectFirst();
-      cbxitemType.getItems().addAll(AUDIO,VISUAL,AUDIO_MOBILE,VISUAL_MOBILE);
+      cbxitemType.getItems().addAll(AUDIO, VISUAL, AUDIO_MOBILE, VISUAL_MOBILE);
       cbxitemType.getSelectionModel().selectFirst();
 
     } catch (ClassNotFoundException e) {
@@ -102,5 +76,28 @@ public class Controller {
     } catch (SQLException e) { // sql exception needed
       e.printStackTrace();
     }
+  }
+  /** @param event when the button is pressed it will add input to Product DB */
+  @FXML
+  void btnAddProduct(ActionEvent event) {
+
+    try {
+      String query = "INSERT INTO PRODUCT(name, manufacturer, type) VALUES (?, ?, ?)";
+      PreparedStatement ps = conn.prepareStatement(query);
+      ps.setString(1, txtFprodName.getText());
+      ps.setString(2, txtFmanu.getText());
+      ps.setString(3, cbxitemType.getValue().code);
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+  /**
+   * @param event this action records the product & prints out to the screen that it was successful
+   */
+  @FXML
+  void btnRecordProduction(ActionEvent event) {
+
+    System.out.println("Product was recorded");
   }
 }

@@ -9,46 +9,62 @@ public class ProductionRecord {
   private String serialNumber;
   private Date dateProduced;
 
-  public ProductionRecord(int productId){
+  public ProductionRecord(int productId) {
 
     productionNumber = 0;
     serialNumber = "0";
     dateProduced = new Date();
   }
-  public ProductionRecord(int productId, int productionNumber, String serialNumber,
-      Date dateProduced){
+
+  public ProductionRecord(
+      int productId, int productionNumber, String serialNumber, Date dateProduced) {
     this.dateProduced = dateProduced;
     this.serialNumber = serialNumber;
     this.productionNumber = productionNumber;
     this.productId = productId;
   }
+
   @Override
-  public String toString(){
-    return "Prod. Num: " + productionNumber + " Product ID: " + productId +
-        " Serial Num: " + serialNumber + " Date: " + dateProduced;
+  public String toString() {
+    return "Prod. Num: "
+        + productionNumber
+        + " Product ID: "
+        + productId
+        + " Serial Num: "
+        + serialNumber
+        + " Date: "
+        + dateProduced;
   }
-  public void setProductionNumber(int productionNumber){
+
+  public void setProductionNumber(int productionNumber) {
     this.productionNumber = productionNumber;
   }
-  public void setProductId(int productId){
+
+  public void setProductId(int productId) {
     this.productId = productId;
   }
-  public void setSerialNumber(String serialNumber){
+
+  public void setSerialNumber(String serialNumber) {
     this.serialNumber = serialNumber;
   }
-  public void setDateProduced(Date dateProduced){
+
+  public void setDateProduced(Date dateProduced) {
     this.dateProduced = dateProduced;
   }
-  public int getProductionNumber(){
+
+  public int getProductionNumber() {
     return productionNumber;
   }
-  public int getProductId(){
+
+  public int getProductId() {
     return productId;
   }
-  public String getSerialNumber(){
+
+  public String getSerialNumber() {
     return serialNumber;
   }
-  public Date getDateProduced(){
+
+  public Date getDateProduced() {
     return dateProduced;
   }
 }
