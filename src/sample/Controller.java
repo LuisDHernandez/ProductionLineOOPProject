@@ -1,10 +1,6 @@
 package sample;
 
-import static sample.ItemType.AUDIO;
-import static sample.ItemType.AUDIO_MOBILE;
-import static sample.ItemType.VISUAL;
-import static sample.ItemType.VISUAL_MOBILE;
-
+import static sample.ItemType.*;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import javafx.scene.control.Button;
@@ -12,7 +8,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import sample.ItemType.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -87,6 +82,8 @@ public class Controller {
       ps.setString(1, txtFprodName.getText());
       ps.setString(2, txtFmanu.getText());
       ps.setString(3, cbxitemType.getValue().code);
+
+      ps.executeUpdate();
 
     } catch (SQLException e) {
       e.printStackTrace();
