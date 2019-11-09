@@ -12,6 +12,7 @@ public abstract class Product implements Item {
     this.name = name;
     this.manufacturer = manufacturer;
     this.type = type;
+    id = 0;
   }
 
   public String toString() {
@@ -20,6 +21,10 @@ public abstract class Product implements Item {
 
   public int getId() {
     return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public void setName(String theName) {
@@ -50,5 +55,8 @@ public abstract class Product implements Item {
 class Widget extends Product {
   public Widget(String name, String manufacturer, ItemType type) {
     super(name, manufacturer, type);
+    int id = getId();
+    id++;
+    setId(id);
   }
 }

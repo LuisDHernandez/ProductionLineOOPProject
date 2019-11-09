@@ -2,6 +2,7 @@ package sample;
 
 import java.util.Date;
 
+/** @author Luis Hernandez */
 public class ProductionRecord {
 
   private int productionNumber;
@@ -9,6 +10,7 @@ public class ProductionRecord {
   private String serialNumber;
   private Date dateProduced;
 
+  /** @param productId products generated id record a product by using its ID */
   public ProductionRecord(int productId) {
 
     productionNumber = 0;
@@ -16,6 +18,12 @@ public class ProductionRecord {
     dateProduced = new Date();
   }
 
+  /**
+   * @param productId products generated id
+   * @param productionNumber the number assigned to it after being produced
+   * @param serialNumber programmed number after it is created
+   * @param dateProduced time produced
+   */
   public ProductionRecord(
       int productId, int productionNumber, String serialNumber, Date dateProduced) {
     this.dateProduced = dateProduced;
@@ -24,6 +32,10 @@ public class ProductionRecord {
     this.productId = productId;
   }
 
+  /**
+   * @param item product item that has name, manufacturer, type being produced
+   * @param count updated variable to give unique serial number
+   */
   public ProductionRecord(Product item, int count) {
     serialNumber = item.getManufacturer().substring(0, 3) + item.getType().code + "00" + count;
     dateProduced = new Date();
@@ -41,6 +53,7 @@ public class ProductionRecord {
         + dateProduced;
   }
 
+  /** MUTATOR METHODS * */
   public void setProductionNumber(int productionNumber) {
     this.productionNumber = productionNumber;
   }
@@ -57,6 +70,7 @@ public class ProductionRecord {
     this.dateProduced = dateProduced;
   }
 
+  /** ACCESSOR METHODS * */
   public int getProductionNumber() {
     return productionNumber;
   }

@@ -141,11 +141,11 @@ public class Controller {
 
         Product product = new Widget(name, manufacturer, prodType);
         // save to observable list
+        product.setId(id++);
         productLine.add(product);
-
-        tbvExProd.setItems(productLine);
-        chooseProdLSV.setItems(productLine);
       }
+      tbvExProd.setItems(productLine);
+      chooseProdLSV.setItems(productLine);
     } catch (SQLException e) {
       e.printStackTrace();
     }
