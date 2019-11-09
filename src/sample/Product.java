@@ -55,8 +55,5 @@ public abstract class Product implements Item {
 class Widget extends Product {
   public Widget(String name, String manufacturer, ItemType type) {
     super(name, manufacturer, type);
-    int id = getId();
-    id++;
-    setId(id);
   }
 }

@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -20,11 +23,45 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
 /** @author Luis Hernandez 9/20/2019 */
 public class Controller {
 
   /** create comboBox object to hold quantity amount of items */
+  @FXML
+  private TabPane tbpaneBox;
+
+  @FXML
+  private Tab tabProductLine;
+
+  @FXML
+  private Tab tabProduce;
+
+  @FXML
+  private Tab tabProductionLog;
+
+  @FXML
+  private GridPane grdpnProductLine;
+
+  @FXML
+  private Label lblExProd;
+
+  @FXML
+  private Label lblProdName;
+
+  @FXML
+  private Label lblManufacturer;
+
+  @FXML
+  private Label lblType;
+
+  @FXML
+  private Label lblQuantity;
+
+  @FXML
+  private Label lblChooseProd;
+
   @FXML private TextField txtFprodName;
 
   @FXML private TextField txtFmanu;
@@ -77,7 +114,7 @@ public class Controller {
 
       // Clean-up environment
 
-      cbxQuantity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,25,50,100);
+      cbxQuantity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 25, 50, 100);
       cbxQuantity.setEditable(true);
       cbxQuantity.getSelectionModel().selectFirst();
       cbxitemType.getItems().addAll(AUDIO, VISUAL, AUDIO_MOBILE, VISUAL_MOBILE);
@@ -89,9 +126,11 @@ public class Controller {
     } catch (SQLException e) { // sql exception needed
       e.printStackTrace();
     }
-  }
-  /** @param event when the button is pressed it will add input to Product DB
-   *  and then show the created products in table/list views for the user to see*/
+  }//end initialize
+  /**
+   * @param event when the button is pressed it will add input to Product DB and then show the
+   *     created products in table/list views for the user to see
+   */
   @FXML
   void btnAddProduct(ActionEvent event) throws SQLException {
 
@@ -112,7 +151,6 @@ public class Controller {
       String sql = "SELECT * FROM PRODUCT";
 
       ResultSet rs = stmt.executeQuery(sql);
-
       while (rs.next()) {
 
         // these lines correspond to the database table columns
@@ -129,7 +167,7 @@ public class Controller {
           prodType = VISUAL;
         } else if (type.equals("AM")) {
           prodType = AUDIO_MOBILE;
-        } else if(type.equals("VM")){
+        } else if (type.equals("VM")) {
           prodType = VISUAL_MOBILE;
         }
 
@@ -149,14 +187,12 @@ public class Controller {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-  }
+  }// end btnAddProduct
   /**
    * @param event this action records the product & prints out to the screen that it was successful
    */
   @FXML
   void btnRecordProduction(ActionEvent event) throws SQLException {
-
-
     System.out.println("recorded");
-  }
+  }//end btnRecordProduction
 }
