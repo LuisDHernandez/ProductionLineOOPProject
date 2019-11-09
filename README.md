@@ -6,7 +6,7 @@
 ## Built With
 IntelliJ IDEA Ultimate
 ## Contributing
-With help from Travis Gayle and Emily R. Schwarz and Jeffry Munoz
+With help from Travis Gayle, Emily R. Schwarz, Jeffry Munoz and Professor Vanselow
 ## Author
 Luis Hernandez
 ## License
