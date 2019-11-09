@@ -51,7 +51,7 @@ public class Controller {
 
   @FXML private TableColumn<?, ?> colID;
 
-  private ObservableList<Product> theProducts = FXCollections.observableArrayList();
+  private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
   // establish database variables
   private Connection conn;
@@ -141,10 +141,10 @@ public class Controller {
 
         Product product = new Widget(name, manufacturer, prodType);
         // save to observable list
-        theProducts.add(product);
+        productLine.add(product);
 
-        tbvExProd.setItems(theProducts);
-        chooseProdLSV.setItems(theProducts);
+        tbvExProd.setItems(productLine);
+        chooseProdLSV.setItems(productLine);
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -155,6 +155,8 @@ public class Controller {
    */
   @FXML
   void btnRecordProduction(ActionEvent event) throws SQLException {
+
+
     System.out.println("recorded");
   }
 }
