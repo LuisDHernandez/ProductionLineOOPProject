@@ -72,7 +72,7 @@
           <Label fx:id="lblQuantity" layoutX="334.0" layoutY="362.0" text="Quantity:"/>
           <ComboBox fx:id="cbxQuantity" layoutX="331.0" layoutY="393.0" prefWidth="150.0"/>
           <Button fx:id="btnrecordProd" layoutX="334.0" layoutY="449.0" mnemonicParsing="false"
-            onAction="#btnRecordProduction"  text="Record Production"/>
+            onAction="#btnRecordProduction" text="Record Production"/>
         </AnchorPane>
       </AnchorPane>
     </Tab>
