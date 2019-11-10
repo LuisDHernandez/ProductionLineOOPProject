@@ -2,14 +2,14 @@ package sample;
 
 /**
  * @author Luis Herenandez
- * @brief Screen object that contains the code to display a movie to movieplayers
+ * @brief Screen object that contains the code to display a movie to movieplayers.
  */
 public class Screen implements ScreenSpec {
 
   // local screen properties
-  String resolution;
-  int refreshRate;
-  int responseTime;
+  private String resolution;
+  private int refreshRate;
+  private int responseTime;
 
   /**
    * @param theResolution - resolution of the screen

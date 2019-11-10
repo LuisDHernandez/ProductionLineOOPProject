@@ -3,7 +3,7 @@ package sample;
 /**
  * @author Luis Hernandez
  * @brief AudioPlayer product that can play music and implements MultimediaControl and extends
- *     Product
+ * Product
  */
 public class AudioPlayer extends Product implements MultimediaControl {
 

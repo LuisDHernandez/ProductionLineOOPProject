@@ -28,7 +28,7 @@ import javafx.scene.layout.GridPane;
 /**
  * @author Luis Hernandez
  * @brief Controller class for GUI project, holds all code to GUI and functions of the GUI system
- *     9/20/2019
+ * 9/20/2019
  */
 public class Controller {
 
