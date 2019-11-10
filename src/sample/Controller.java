@@ -134,10 +134,13 @@ public class Controller {
       ps.setString(3, cbxitemType.getValue().code);
 
       ps.executeUpdate();
+      ps.close();
+      conn.close();
 
       System.out.println("item added to db");
     } catch (SQLException e) {
       e.printStackTrace();
+      conn.close();
     }
     try {
       String sql = "SELECT * FROM PRODUCT";
@@ -176,8 +179,10 @@ public class Controller {
       }
       tbvExProd.setItems(productLine);
       chooseProdLSV.setItems(productLine);
+      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
+      conn.close();
     }
   } // end btnAddProduct
   /** @param event this action records the product & sends it to the production log to see output */
