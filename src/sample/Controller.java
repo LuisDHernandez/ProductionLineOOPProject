@@ -25,42 +25,34 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
-/** @author Luis Hernandez 9/20/2019 */
+/**
+ * @author Luis Hernandez
+ * @brief Controller class for GUI project, holds all code to GUI and functions of the GUI system
+ *     9/20/2019
+ */
 public class Controller {
 
-  /** create comboBox object to hold quantity amount of items */
-  @FXML
-  private TabPane tbpaneBox;
+  @FXML private TabPane tbpaneBox;
 
-  @FXML
-  private Tab tabProductLine;
+  @FXML private Tab tabProductLine;
 
-  @FXML
-  private Tab tabProduce;
+  @FXML private Tab tabProduce;
 
-  @FXML
-  private Tab tabProductionLog;
+  @FXML private Tab tabProductionLog;
 
-  @FXML
-  private GridPane grdpnProductLine;
+  @FXML private GridPane grdpnProductLine;
 
-  @FXML
-  private Label lblExProd;
+  @FXML private Label lblExProd;
 
-  @FXML
-  private Label lblProdName;
+  @FXML private Label lblProdName;
 
-  @FXML
-  private Label lblManufacturer;
+  @FXML private Label lblManufacturer;
 
-  @FXML
-  private Label lblType;
+  @FXML private Label lblType;
 
-  @FXML
-  private Label lblQuantity;
+  @FXML private Label lblQuantity;
 
-  @FXML
-  private Label lblChooseProd;
+  @FXML private Label lblChooseProd;
 
   @FXML private TextField txtFprodName;
 
@@ -93,11 +85,11 @@ public class Controller {
   // establish database variables
   private Connection conn;
   private Statement stmt;
-
+  // grab jdbc driver and url
   static final String JDBC_DRIVER = "org.h2.Driver"; // could be private but chose not to
   static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
 
-  /** Initialize the Database and add items to combobox */
+  /** Initialize the Database and add items to combobox setup GUI initial look */
   public void initialize() {
 
     //  Database credential
@@ -126,7 +118,7 @@ public class Controller {
     } catch (SQLException e) { // sql exception needed
       e.printStackTrace();
     }
-  }//end initialize
+  } // end initialize
   /**
    * @param event when the button is pressed it will add input to Product DB and then show the
    *     created products in table/list views for the user to see
@@ -187,12 +179,10 @@ public class Controller {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-  }// end btnAddProduct
-  /**
-   * @param event this action records the product & prints out to the screen that it was successful
-   */
+  } // end btnAddProduct
+  /** @param event this action records the product & sends it to the production log to see output */
   @FXML
   void btnRecordProduction(ActionEvent event) throws SQLException {
     System.out.println("recorded");
-  }//end btnRecordProduction
+  } // end btnRecordProduction
 }

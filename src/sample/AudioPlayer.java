@@ -1,10 +1,21 @@
 package sample;
 
+/**
+ * @author Luis Hernandez
+ * @brief AudioPlayer product that can play music and implements MultimediaControl and extends
+ *     Product
+ */
 public class AudioPlayer extends Product implements MultimediaControl {
 
   private String supportedAudioFormats;
   private String supportedPlaylistFormats;
 
+  /**
+   * @param name - name of the audio player product
+   * @param manufacturer - creator of the audioplayer
+   * @param supportedAudioFormats - what audio formats it can use
+   * @param supportedPlaylistFormats - what playlists it can use
+   */
   public AudioPlayer(
       String name,
       String manufacturer,
@@ -35,6 +46,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     System.out.println("Next");
   }
 
+  /** @return string of name, manufacturer, type and supported formats to be displayed */
   public String toString() {
     return "Name: "
         + getName()
@@ -48,6 +60,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
         + supportedPlaylistFormats;
   }
 
+  /** MUTATOR METHODS* */
   public void setSupportedAudioFormats(String supportAF) {
     supportedAudioFormats = supportAF;
   }
@@ -56,6 +69,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
     supportedPlaylistFormats = supportPF;
   }
 
+  /** ACCESSOR METHODS* */
   public String getSupportedAudioFormats() {
     return supportedAudioFormats;
   }

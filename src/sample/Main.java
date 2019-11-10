@@ -31,10 +31,4 @@ public class Main extends Application {
 
     launch(args);
   }
-  /**
-   * Notes from class 9/30
-   *
-   * <p>Object class Vs Driver class: object class is class that describes the object 'cookie
-   * cutter' driver class makes instances of objects
-   */
 }

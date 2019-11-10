@@ -1,10 +1,21 @@
 package sample;
 
+/**
+ * @author Luis Hernandez
+ * @brief object class that can play visuals and implements multimedia control and extends product
+ */
 public class MoviePlayer extends Product implements MultimediaControl {
 
+  // local properties for movieplayer only
   Screen screen;
   MonitorType monitorType;
 
+  /**
+   * @param name - the name of the MoviePlayer product
+   * @param manufacturer - company that makes the MoviePlayer
+   * @param screen - screen that displays visuals and implements resolution, etc.
+   * @param monitorType - enum that describes the kind of monitor it has
+   */
   public MoviePlayer(String name, String manufacturer, Screen screen, MonitorType monitorType) {
     super(name, manufacturer, ItemType.VISUAL);
     this.screen = screen;
@@ -31,6 +42,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
     System.out.println("Next movie");
   }
 
+  /** @return string of object name, manufacturer, type, screen and monitor type */
   public String toString() {
     return "Name: "
         + getName()
@@ -44,6 +56,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
         + monitorType;
   }
 
+  /** MUTATOR METHODS* */
   public void setScreen(Screen theScreen) {
     screen = theScreen;
   }
@@ -52,6 +65,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
     monitorType = theMonitor;
   }
 
+  /** ACCESSOR METHODS* */
   public Screen getScreen() {
     return screen;
   }

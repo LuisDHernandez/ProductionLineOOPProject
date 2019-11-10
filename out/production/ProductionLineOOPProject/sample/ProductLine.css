@@ -17,37 +17,30 @@
 #tabProductLine {
   -fx-background-color: #25a820;
 }
-
-#lblType {
+#lblType{
   -fx-background-color: white;
   -fx-border-color: green;
 }
-
-#lblProdName {
+#lblProdName{
   -fx-background-color: white;
   -fx-border-color: green;
 }
-
-#lblManufacturer {
+#lblManufacturer{
   -fx-background-color: white;
   -fx-border-color: green;
 }
-
-#lblExProd {
+#lblExProd{
   -fx-background-color: white;
   -fx-border-color: green;
 }
-
-#lblChooseProd {
+#lblChooseProd{
   -fx-background-color: white;
   -fx-border-color: green;
 }
-
-#lblQuantity {
+#lblQuantity{
   -fx-background-color: white;
   -fx-border-color: green;
 }
-
 #tbpaneBox {
   -fx-background-image: url("https://wallpapertag.com/wallpaper/full/4/a/7/214876-green-and-black-background-1920x1269-for-full-hd.jpg");
   -fx-background-size: contain;

@@ -52,10 +52,10 @@
           <TableView fx:id="tbvExProd" layoutX="376.0" layoutY="78.0" prefHeight="533.0"
             prefWidth="519.0">
             <columns>
-              <TableColumn fx:id="colProduct" prefWidth="157.0" text="Product"/>
-              <TableColumn fx:id="colManufacturer" prefWidth="178.0" text="Manufacter"/>
-              <TableColumn fx:id="colItemType" prefWidth="70.0" text="Type"/>
-              <TableColumn fx:id="colID" prefWidth="113.0" text="ID"/>
+              <TableColumn fx:id="colProduct" prefWidth="137.0" text="Product"/>
+              <TableColumn fx:id="colManufacturer" prefWidth="139.0" text="Manufacter"/>
+              <TableColumn fx:id="colItemType" prefWidth="155.0" text="Type"/>
+              <TableColumn fx:id="colID" prefWidth="87.0" text="ID"/>
             </columns>
           </TableView>
           <Button fx:id="btnaddProduct" layoutX="236.0" layoutY="344.0" mnemonicParsing="false"

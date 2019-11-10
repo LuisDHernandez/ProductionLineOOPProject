@@ -2,7 +2,11 @@ package sample;
 
 import java.util.Date;
 
-/** @author Luis Hernandez */
+/**
+ * @author Luis Hernandez
+ * @brief class that integrates with database and creates a view of the products that are being
+ *     produced/ have been produced at this business
+ */
 public class ProductionRecord {
 
   private int productionNumber;
