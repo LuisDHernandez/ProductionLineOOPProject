@@ -13,7 +13,7 @@ Luis Hernandez
 ## Acknowledgments
 ## History
 ## Key Programming Concepts Utilized
-Database Integration
-Encapsulation
-Interfaces, Abstract classes, and Enums
+Database Integration,
+Encapsulation,
+Interfaces, Abstract classes, and Enums,
 JavaFX and GUI Applications
