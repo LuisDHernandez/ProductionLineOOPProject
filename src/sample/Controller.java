@@ -2,6 +2,8 @@ package sample;
 
 import static sample.ItemType.*;
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
+import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -58,7 +60,7 @@ public class Controller {
 
   @FXML private TextField txtFmanu;
 
-  @FXML private TextArea prodLogtxtA;
+  @FXML private ListView<ProductionRecord> prodLogLSV;
 
   @FXML private ComboBox<ItemType> cbxitemType;
 
@@ -82,6 +84,8 @@ public class Controller {
 
   private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
+  private ObservableList<ProductionRecord> productShow = FXCollections.observableArrayList();
+
   // establish database variables
   private Connection conn;
   private Statement stmt;
@@ -90,7 +94,7 @@ public class Controller {
   static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
 
   /** Initialize the Database and add items to combobox setup GUI initial look */
-  public void initialize() {
+  public void initialize() throws SQLException {
 
     //  Database credential
     stmt = null;
@@ -135,18 +139,17 @@ public class Controller {
 
       ps.executeUpdate();
       ps.close();
-      conn.close();
 
-      System.out.println("item added to db");
     } catch (SQLException e) {
       e.printStackTrace();
-      conn.close();
     }
     try {
       String sql = "SELECT * FROM PRODUCT";
 
       ResultSet rs = stmt.executeQuery(sql);
+      productLine.clear();
       while (rs.next()) {
+
 
         // these lines correspond to the database table columns
         int id = rs.getInt(1);
@@ -179,15 +182,59 @@ public class Controller {
       }
       tbvExProd.setItems(productLine);
       chooseProdLSV.setItems(productLine);
-      conn.close();
     } catch (SQLException e) {
       e.printStackTrace();
-      conn.close();
     }
   } // end btnAddProduct
   /** @param event this action records the product & sends it to the production log to see output */
   @FXML
   void btnRecordProduction(ActionEvent event) throws SQLException {
-    System.out.println("recorded");
+
+    productShow.clear();
+    Product theRecordedProd = chooseProdLSV.getSelectionModel().getSelectedItem();
+    ProductionRecord produce = new ProductionRecord(theRecordedProd, 0);
+
+    String prodRec =
+        "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID,"
+            + " SERIAL_NUM, DATE_PRODUCED ) VALUES (?, ?, ?, ?)";
+
+    try {
+      PreparedStatement ps = conn.prepareStatement(prodRec);
+      ps.setInt(1, produce.getProductionNumber());
+      ps.setInt(2, produce.getProductId());
+      ps.setString(3, produce.getSerialNumber());
+      ps.setTimestamp(4, Timestamp.from(produce.getDateProduced().toInstant()));
+
+      ps.executeUpdate();
+      ps.close();
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    String showProduction = "SELECT * FROM PRODUCTIONRECORD";
+    try (ResultSet rs = stmt.executeQuery(showProduction)) {
+
+      ProductionRecord showRecord = new ProductionRecord(0, 0,
+          "0", produce.getDateProduced());
+
+      while (rs.next()) {
+
+        int productionNumber = rs.getInt(1);
+        int productId = rs.getInt(2);
+        String serialNum = rs.getString(3);
+        Timestamp dateRec = rs.getTimestamp(4);
+
+        showRecord.setDateProduced(dateRec);
+        showRecord.setSerialNumber(serialNum);
+        showRecord.setProductId(productId++);
+        showRecord.setProductionNumber(productionNumber++);
+
+        productShow.add(showRecord);
+        prodLogLSV.setItems(productShow);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   } // end btnRecordProduction
 }

@@ -41,7 +41,7 @@ public class ProductionRecord {
    * @param count updated variable to give unique serial number
    */
   public ProductionRecord(Product item, int count) {
-    serialNumber = item.getManufacturer().substring(0, 3) + item.getType().code + "00" + count;
+    serialNumber = item.getManufacturer().substring(0, 3) + item.getType().code + "00" + count++;
     dateProduced = new Date();
   }
 
