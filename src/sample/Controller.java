@@ -150,7 +150,6 @@ public class Controller {
       productLine.clear();
       while (rs.next()) {
 
-
         // these lines correspond to the database table columns
         int id = rs.getInt(1);
         String name = rs.getString(2);
@@ -215,8 +214,7 @@ public class Controller {
     String showProduction = "SELECT * FROM PRODUCTIONRECORD";
     try (ResultSet rs = stmt.executeQuery(showProduction)) {
 
-      ProductionRecord showRecord = new ProductionRecord(0, 0,
-          "0", produce.getDateProduced());
+      ProductionRecord showRecord = new ProductionRecord(0, 0, "0", produce.getDateProduced());
 
       while (rs.next()) {
 
