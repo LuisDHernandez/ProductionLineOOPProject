@@ -3,6 +3,9 @@ package sample;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Luis D. Hernandez 12/2/2019
+ */
 public class Employee {
 
   StringBuilder name;
@@ -10,6 +13,11 @@ public class Employee {
   String password;
   String email;
 
+  /**
+   *
+   * @param name - name provided by user to indicate themselves
+   * @param password - character string to keep project integrity to user
+   */
   public Employee(String name, String password) {
     this.name = new StringBuilder(name);
     if (checkName(name)) {
@@ -27,6 +35,10 @@ public class Employee {
     }
   }
 
+  /**
+   *
+   * @param name - uses name to setup a username for the project program
+   */
   private void setUsername(String name) {
 
     Pattern nameAfterSpace = Pattern.compile("\\s(.*)", Pattern.MULTILINE);
@@ -39,6 +51,11 @@ public class Employee {
     this.username = initials.toLowerCase();
   }
 
+  /**
+   *
+   * @param name
+   * @return a boolean variable that is true if username exists
+   */
   private boolean checkName(String name) {
     Pattern pattern = Pattern.compile("\\s");
     Matcher matcher = pattern.matcher(name);

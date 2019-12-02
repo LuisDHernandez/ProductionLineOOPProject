@@ -181,6 +181,8 @@ public class Controller {
       }
       tbvExProd.setItems(productLine);
       chooseProdLSV.setItems(productLine);
+      txtFmanu.clear();
+      txtFprodName.clear();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -190,10 +192,10 @@ public class Controller {
   void btnRecordProduction(ActionEvent event) throws SQLException {
 
     productShow.clear();
-    int numberToPrint;
-    int numberPrinted = cbxQuantity.getValue();
+    int numberPrinted;
+    int numberToPrint = cbxQuantity.getValue();
     Product theRecordedProd = chooseProdLSV.getSelectionModel().getSelectedItem();
-    ProductionRecord produce = new ProductionRecord(theRecordedProd, numberPrinted);
+    ProductionRecord produce = new ProductionRecord(theRecordedProd, numberToPrint);
 
     String prodRec =
         "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID,"
