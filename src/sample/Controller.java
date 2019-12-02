@@ -190,13 +190,16 @@ public class Controller {
   void btnRecordProduction(ActionEvent event) throws SQLException {
 
     productShow.clear();
+    int numberToPrint;
+    int numberPrinted = cbxQuantity.getValue();
     Product theRecordedProd = chooseProdLSV.getSelectionModel().getSelectedItem();
-    ProductionRecord produce = new ProductionRecord(theRecordedProd, 0);
+    ProductionRecord produce = new ProductionRecord(theRecordedProd, numberPrinted);
 
     String prodRec =
         "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID,"
             + " SERIAL_NUM, DATE_PRODUCED ) VALUES (?, ?, ?, ?)";
 
+    // for(numberToPrint = 0; numberToPrint <= numberPrinted ; numberToPrint++)
     try {
       PreparedStatement ps = conn.prepareStatement(prodRec);
       ps.setInt(1, produce.getProductionNumber());
