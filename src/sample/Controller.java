@@ -82,6 +82,22 @@ public class Controller {
 
   @FXML private TableColumn<?, ?> colID;
 
+  @FXML private Tab tabEmployee;
+
+  @FXML private Label lblEmpName;
+
+  @FXML private TextField txtfEmpName;
+
+  @FXML private Button btnCreateUser;
+
+  @FXML private Label lblPassword;
+
+  @FXML private TextField txtfPassword;
+
+  @FXML private TextField txtfEmail;
+
+  @FXML private Label lblEmail;
+
   private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
   private ObservableList<ProductionRecord> productShow = FXCollections.observableArrayList();
@@ -115,6 +131,7 @@ public class Controller {
       cbxQuantity.getSelectionModel().selectFirst();
       cbxitemType.getItems().addAll(AUDIO, VISUAL, AUDIO_MOBILE, VISUAL_MOBILE);
       cbxitemType.getSelectionModel().selectFirst();
+      loadProducts();
 
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
@@ -143,6 +160,10 @@ public class Controller {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    loadProducts();
+  } // end btnAddProduct
+
+  public void loadProducts() {
     try {
       String sql = "SELECT * FROM PRODUCT";
 
@@ -186,22 +207,21 @@ public class Controller {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-  } // end btnAddProduct
+  }
   /** @param event this action records the product & sends it to the production log to see output */
   @FXML
   void btnRecordProduction(ActionEvent event) throws SQLException {
 
     productShow.clear();
-    int numberPrinted;
+    int numberPrinted = 0;
     int numberToPrint = cbxQuantity.getValue();
     Product theRecordedProd = chooseProdLSV.getSelectionModel().getSelectedItem();
-    ProductionRecord produce = new ProductionRecord(theRecordedProd, numberToPrint);
+    ProductionRecord produce = new ProductionRecord(theRecordedProd, numberPrinted++);
 
     String prodRec =
         "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID,"
             + " SERIAL_NUM, DATE_PRODUCED ) VALUES (?, ?, ?, ?)";
 
-    // for(numberToPrint = 0; numberToPrint <= numberPrinted ; numberToPrint++)
     try {
       PreparedStatement ps = conn.prepareStatement(prodRec);
       ps.setInt(1, produce.getProductionNumber());
@@ -219,7 +239,12 @@ public class Controller {
     String showProduction = "SELECT * FROM PRODUCTIONRECORD";
     try (ResultSet rs = stmt.executeQuery(showProduction)) {
 
-      ProductionRecord showRecord = new ProductionRecord(0, 0, "0", produce.getDateProduced());
+      ProductionRecord showRecord =
+          new ProductionRecord(
+              produce.getProductId(),
+              produce.getProductionNumber(),
+              produce.getSerialNumber(),
+              produce.getDateProduced());
 
       while (rs.next()) {
 
@@ -240,4 +265,8 @@ public class Controller {
       e.printStackTrace();
     }
   } // end btnRecordProduction
+
+  public void createEmployee(ActionEvent actionEvent) {
+    Employee emp = new Employee(txtfEmpName.getText(), txtfPassword.getText());
+  }
 }

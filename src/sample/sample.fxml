@@ -81,5 +81,21 @@
           prefWidth="652.0"/>
       </AnchorPane>
     </Tab>
+    <Tab fx:id="tabEmployee" text="Employee">
+      <content>
+        <AnchorPane prefHeight="300.0" prefWidth="300.0">
+          <children>
+            <Label fx:id="lblEmpName" layoutX="37.0" layoutY="72.0" text="Name"/>
+            <TextField fx:id="txtfEmpName" layoutX="126.0" layoutY="67.0"/>
+            <Button fx:id="btnCreateUser" layoutX="220.0" layoutY="301.0" mnemonicParsing="false"
+              onAction="#createEmployee" text="Create User"/>
+            <Label fx:id="lblPassword" layoutX="40.0" layoutY="140.0" text="Password"/>
+            <TextField fx:id="txtfPassword" layoutX="126.0" layoutY="135.0"/>
+            <TextField fx:id="txtfEmail" layoutX="126.0" layoutY="203.0"/>
+            <Label fx:id="lblEmail" layoutX="40.0" layoutY="208.0" text="Email"/>
+          </children>
+        </AnchorPane>
+      </content>
+    </Tab>
   </TabPane>
 </GridPane>

@@ -6,6 +6,10 @@
   -fx-background-color: #25a820;
 }
 
+#btnCreateUser {
+  -fx-background-color: #25a820;
+}
+
 #tabProduce {
   -fx-background-color: #25a820;
 }
@@ -15,6 +19,10 @@
 }
 
 #tabProductLine {
+  -fx-background-color: #25a820;
+}
+
+#tabEmployee {
   -fx-background-color: #25a820;
 }
 
@@ -44,6 +52,21 @@
 }
 
 #lblQuantity {
+  -fx-background-color: white;
+  -fx-border-color: green;
+}
+
+#lblEmpName {
+  -fx-background-color: white;
+  -fx-border-color: green;
+}
+
+#lblEmail {
+  -fx-background-color: white;
+  -fx-border-color: green;
+}
+
+#lblPassword {
   -fx-background-color: white;
   -fx-border-color: green;
 }
