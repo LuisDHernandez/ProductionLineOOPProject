@@ -3,9 +3,7 @@ package sample;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author Luis D. Hernandez 12/2/2019
- */
+/** @author Luis D. Hernandez 12/2/2019 */
 public class Employee {
 
   StringBuilder name;
@@ -14,7 +12,6 @@ public class Employee {
   String email;
 
   /**
-   *
    * @param name - name provided by user to indicate themselves
    * @param password - character string to keep project integrity to user
    */
@@ -35,10 +32,7 @@ public class Employee {
     }
   }
 
-  /**
-   *
-   * @param name - uses name to setup a username for the project program
-   */
+  /** @param name - uses name to setup a username for the project program */
   private void setUsername(String name) {
 
     Pattern nameAfterSpace = Pattern.compile("\\s(.*)", Pattern.MULTILINE);
@@ -52,7 +46,6 @@ public class Employee {
   }
 
   /**
-   *
    * @param name
    * @return a boolean variable that is true if username exists
    */
@@ -101,4 +94,25 @@ public class Employee {
         + "Initial Password : "
         + password;
   }
+
+  public String getName() {
+    return name.toString();
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String reverseString(String id) {
+    //reverse db pw to make it more safe
+    if (id.length() == 1){
+      return id;
+    }
+    return reverseString(id.substring(1)) + id.charAt(0);
+  }
 }
+

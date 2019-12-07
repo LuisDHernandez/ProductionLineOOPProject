@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -77,7 +78,7 @@
     </Tab>
     <Tab fx:id="tabProductionLog" text="Production Log">
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-        <ListView fx:id="prodLogLSV" layoutX="14.0" layoutY="14.0" prefHeight="490.0"
+        <TextArea fx:id="prodLogTA" layoutX="14.0" layoutY="14.0" prefHeight="490.0"
           prefWidth="652.0"/>
       </AnchorPane>
     </Tab>
@@ -93,6 +94,8 @@
             <TextField fx:id="txtfPassword" layoutX="126.0" layoutY="135.0"/>
             <TextField fx:id="txtfEmail" layoutX="126.0" layoutY="203.0"/>
             <Label fx:id="lblEmail" layoutX="40.0" layoutY="208.0" text="Email"/>
+            <TextArea fx:id="TAlogEmp" layoutX="362.0" layoutY="72.0" prefHeight="430.0"
+              prefWidth="388.0"/>
           </children>
         </AnchorPane>
       </content>

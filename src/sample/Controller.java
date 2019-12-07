@@ -60,7 +60,7 @@ public class Controller {
 
   @FXML private TextField txtFmanu;
 
-  @FXML private ListView<ProductionRecord> prodLogLSV;
+  @FXML private TextArea prodLogTA;
 
   @FXML private ComboBox<ItemType> cbxitemType;
 
@@ -97,6 +97,8 @@ public class Controller {
   @FXML private TextField txtfEmail;
 
   @FXML private Label lblEmail;
+
+  @FXML private TextArea TAlogEmp;
 
   private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
@@ -213,10 +215,8 @@ public class Controller {
   void btnRecordProduction(ActionEvent event) throws SQLException {
 
     productShow.clear();
-    int numberPrinted = 0;
-    int numberToPrint = cbxQuantity.getValue();
     Product theRecordedProd = chooseProdLSV.getSelectionModel().getSelectedItem();
-    ProductionRecord produce = new ProductionRecord(theRecordedProd, numberPrinted++);
+    ProductionRecord produce = new ProductionRecord(theRecordedProd, 0);
 
     String prodRec =
         "INSERT INTO PRODUCTIONRECORD(PRODUCTION_NUM, PRODUCT_ID,"
@@ -259,14 +259,16 @@ public class Controller {
         showRecord.setProductionNumber(productionNumber++);
 
         productShow.add(showRecord);
-        prodLogLSV.setItems(productShow);
+        prodLogTA.setText(productShow.toString());
       }
     } catch (SQLException e) {
       e.printStackTrace();
     }
   } // end btnRecordProduction
 
-  public void createEmployee(ActionEvent actionEvent) {
+  public void createEmployee(ActionEvent actionEvent) throws SQLException {
+    TAlogEmp.clear();
     Employee emp = new Employee(txtfEmpName.getText(), txtfPassword.getText());
+    TAlogEmp.setText(emp.toString());
   }
 }
