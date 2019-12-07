@@ -43,8 +43,10 @@
             <Label fx:id="lblProdName" text="Product Name"/>
             <Label fx:id="lblManufacturer" text="Manufacturer" GridPane.rowIndex="1"/>
             <Label fx:id="lblType" text="Item Type" GridPane.rowIndex="2"/>
-            <TextField fx:id="txtFprodName" GridPane.columnIndex="1"/>
-            <TextField fx:id="txtFmanu" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtFprodName" promptText="Ex: iPhone, Galaxy"
+              GridPane.columnIndex="1"/>
+            <TextField fx:id="txtFmanu" promptText="Ex: Apple, Google" GridPane.columnIndex="1"
+              GridPane.rowIndex="1"/>
             <ComboBox fx:id="cbxitemType" prefWidth="150.0" GridPane.columnIndex="1"
               GridPane.rowIndex="2"/>
           </GridPane>
@@ -87,12 +89,15 @@
         <AnchorPane prefHeight="300.0" prefWidth="300.0">
           <children>
             <Label fx:id="lblEmpName" layoutX="37.0" layoutY="72.0" text="Name"/>
-            <TextField fx:id="txtfEmpName" layoutX="126.0" layoutY="67.0"/>
+            <TextField fx:id="txtfEmpName" layoutX="126.0" layoutY="67.0"
+              promptText="First and Last Name"/>
             <Button fx:id="btnCreateUser" layoutX="220.0" layoutY="301.0" mnemonicParsing="false"
               onAction="#createEmployee" text="Create User"/>
             <Label fx:id="lblPassword" layoutX="40.0" layoutY="140.0" text="Password"/>
-            <TextField fx:id="txtfPassword" layoutX="126.0" layoutY="135.0"/>
-            <TextField fx:id="txtfEmail" layoutX="126.0" layoutY="203.0"/>
+            <TextField fx:id="txtfPassword" layoutX="126.0" layoutY="135.0"
+              promptText="Set a password"/>
+            <TextField fx:id="txtfEmail" layoutX="126.0" layoutY="203.0"
+              promptText="Enter a current email"/>
             <Label fx:id="lblEmail" layoutX="40.0" layoutY="208.0" text="Email"/>
             <TextArea fx:id="TAlogEmp" layoutX="362.0" layoutY="72.0" prefHeight="430.0"
               prefWidth="388.0"/>

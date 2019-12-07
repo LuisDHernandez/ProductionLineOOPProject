@@ -30,6 +30,7 @@ public class Employee {
     } else {
       this.password = "pw";
     }
+    reverseString(password);
   }
 
   /** @param name - uses name to setup a username for the project program */
@@ -108,11 +109,10 @@ public class Employee {
   }
 
   public String reverseString(String id) {
-    //reverse db pw to make it more safe
-    if (id.length() == 1){
+    // reverse emp pw to make it more safe
+    if (id.length() == 1) {
       return id;
     }
     return reverseString(id.substring(1)) + id.charAt(0);
   }
 }
-
