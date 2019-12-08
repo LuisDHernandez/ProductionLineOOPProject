@@ -16,6 +16,7 @@ public class Employee {
   String password;
   String email;
   String encode;
+
   /**
    * Constructor takes in name and password inputs to create the employee username, email, and set
    * the name and password.
@@ -23,6 +24,7 @@ public class Employee {
    * @param name - name provided by user to indicate themselves
    * @param password - character string to keep project integrity to user
    */
+
   public Employee(String name, String password) {
     this.name = new StringBuilder(name);
     if (checkName(name)) {

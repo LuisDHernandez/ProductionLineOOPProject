@@ -162,6 +162,7 @@ public class Controller {
    * @param event when the button is pressed it will add input to Product DB and then show the
    *     created products in table/list views for the user to see
    */
+
   @FXML
   void btnAddProduct(ActionEvent event) throws SQLException {
 
@@ -201,7 +202,6 @@ public class Controller {
         String manufacturer = rs.getString(4);
         // create object
         ItemType prodType = null;
-
         if (type.equals("AU")) {
           prodType = AUDIO;
         } else if (type.equals("VI")) {
@@ -236,6 +236,7 @@ public class Controller {
    *
    * @param event this action records the product & sends it to the production log to see output
    */
+
   @FXML
   void btnRecordProduction(ActionEvent event) throws SQLException {
 
