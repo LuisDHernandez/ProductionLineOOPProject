@@ -1,16 +1,21 @@
 package sample;
 
 /**
+ * Movie Player class that utilizes an interface and super class to create an object that can be a
+ * movie player.
+ *
  * @author Luis Hernandez
  * @brief object class that can play visuals and implements multimedia control and extends product.
  */
 public class MoviePlayer extends Product implements MultimediaControl {
 
-  // local properties for movieplayer only
+  // local properties for movie player only
   private Screen screen;
   private MonitorType monitorType;
 
   /**
+   * Constructor that uses inputted name, manufacturer, screen, and monitor type to create object.
+   *
    * @param name - the name of the MoviePlayer product
    * @param manufacturer - company that makes the MoviePlayer
    * @param screen - screen that displays visuals and implements resolution, etc.
@@ -42,7 +47,11 @@ public class MoviePlayer extends Product implements MultimediaControl {
     System.out.println("Next movie");
   }
 
-  /** @return string of object name, manufacturer, type, screen and monitor type */
+  /**
+   * Overrides toString to give desired output in a formatted way.
+   *
+   * @return string of object name, manufacturer, type, screen and monitor type
+   */
   public String toString() {
     return "Name: "
         + getName()
@@ -56,7 +65,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
         + monitorType;
   }
 
-  /** MUTATOR METHODS* */
+  /** MUTATOR METHODS.* */
   public void setScreen(Screen theScreen) {
     screen = theScreen;
   }
@@ -65,7 +74,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
     monitorType = theMonitor;
   }
 
-  /** ACCESSOR METHODS* */
+  /** ACCESSOR METHODS.* */
   public Screen getScreen() {
     return screen;
   }

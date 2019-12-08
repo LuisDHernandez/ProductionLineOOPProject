@@ -1,6 +1,9 @@
 package sample;
 
 /**
+ * Product class is a super class that is used to help create product objects in the main function
+ * of the program.
+ *
  * @author Luis D. Hernandez
  * @brief abstract class that is used as a basis for all objects and integrates database
  *     functionality with program 9/30/2019
@@ -13,6 +16,8 @@ public abstract class Product implements Item {
   private String name;
 
   /**
+   * Constructor takes in inputted name, manufacturer, and item type to create an object.
+   *
    * @param name take name of product
    * @param manufacturer the creator of the product
    * @param type the type of product based on ItemType
@@ -24,12 +29,16 @@ public abstract class Product implements Item {
     id = 0;
   }
 
-  /** @return a string of the name, manufacturer and type of the product */
+  /**
+   * Overrides the toString method to return the desired output.
+   *
+   * @return a string of the name, manufacturer and type of the product
+   */
   public String toString() {
     return "Name: " + name + "\nManufacturer: " + manufacturer + "\nType: " + type;
   }
 
-  /** ACCESSOR METHODS* */
+  /** ACCESSOR METHODS.* */
   public int getId() {
     return id;
   }
@@ -46,7 +55,7 @@ public abstract class Product implements Item {
     return manufacturer;
   }
 
-  /** MUTATOR METHODS* */
+  /** MUTATOR METHODS.* */
   public void setId(int id) {
     this.id = id;
   }
@@ -61,12 +70,5 @@ public abstract class Product implements Item {
 
   public void setType(ItemType theType) {
     type = theType;
-  }
-}
-
-/** child class of Product to instantiate objects of type product since product is abstract */
-class Widget extends Product {
-  public Widget(String name, String manufacturer, ItemType type) {
-    super(name, manufacturer, type);
   }
 }

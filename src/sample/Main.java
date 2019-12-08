@@ -6,7 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/** @author Luis Hernandez 9/30/2019 */
+/**
+ * Main application that launches the FX program while adding the effects of the css stylesheets.
+ *
+ * @author Luis Hernandez 9/30/2019
+ */
 public class Main extends Application {
 
   /**

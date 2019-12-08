@@ -3,6 +3,9 @@ package sample;
 import java.util.Date;
 
 /**
+ * Production Record class is used to create objects of that type in order to produce a log of
+ * products.
+ *
  * @author Luis Hernandez
  * @brief class that integrates with database and creates a view of the products that are being
  *     produced/ have been produced at this business
@@ -14,7 +17,11 @@ public class ProductionRecord {
   private String serialNumber;
   private Date dateProduced;
 
-  /** @param productId products generated id record a product by using its ID */
+  /**
+   * Constructor that uses productID to make a record but sets other fields to a default value.
+   *
+   * @param productId products generated id record a product by using its ID
+   */
   public ProductionRecord(int productId) {
 
     productionNumber = 0;
@@ -23,6 +30,9 @@ public class ProductionRecord {
   }
 
   /**
+   * Constructor that takes in id,number,serial,and date produced to create an object of production
+   * record.
+   *
    * @param productId products generated id
    * @param productionNumber the number assigned to it after being produced
    * @param serialNumber programmed number after it is created
@@ -37,6 +47,9 @@ public class ProductionRecord {
   }
 
   /**
+   * Using a product and a count variable, this constructor creates a record of how many products to
+   * create.
+   *
    * @param item product item that has name, manufacturer, type being produced
    * @param count updated variable to give unique serial number
    */
@@ -58,7 +71,7 @@ public class ProductionRecord {
         + "\n";
   }
 
-  /** MUTATOR METHODS * */
+  /** MUTATOR METHODS. * */
   public void setProductionNumber(int productionNumber) {
     this.productionNumber = productionNumber;
   }
@@ -75,7 +88,7 @@ public class ProductionRecord {
     this.dateProduced = dateProduced;
   }
 
-  /** ACCESSOR METHODS * */
+  /** ACCESSOR METHODS. * */
   public int getProductionNumber() {
     return productionNumber;
   }

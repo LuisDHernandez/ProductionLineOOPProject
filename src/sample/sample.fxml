@@ -69,7 +69,7 @@
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
         <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="503.0" prefWidth="746.0">
           <Label fx:id="lblChooseProd" layoutX="14.0" layoutY="39.0" text="Choose Product"/>
-          <ListView fx:id="chooseProdLSV" layoutX="14.0" layoutY="65.0" prefHeight="415.0"
+          <ListView fx:id="chooseProdLV" layoutX="14.0" layoutY="65.0" prefHeight="415.0"
             prefWidth="312.0"/>
           <Label fx:id="lblQuantity" layoutX="334.0" layoutY="362.0" text="Quantity:"/>
           <ComboBox fx:id="cbxQuantity" layoutX="331.0" layoutY="393.0" prefWidth="150.0"/>
@@ -99,7 +99,7 @@
             <TextField fx:id="txtfEmail" layoutX="126.0" layoutY="203.0"
               promptText="Enter a current email"/>
             <Label fx:id="lblEmail" layoutX="40.0" layoutY="208.0" text="Email"/>
-            <TextArea fx:id="TAlogEmp" layoutX="362.0" layoutY="72.0" prefHeight="430.0"
+            <TextArea fx:id="logEmpTA" layoutX="362.0" layoutY="72.0" prefHeight="430.0"
               prefWidth="388.0"/>
           </children>
         </AnchorPane>

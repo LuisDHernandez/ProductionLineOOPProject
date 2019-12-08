@@ -1,17 +1,26 @@
 package sample;
 
-import static sample.ItemType.*;
+import static sample.ItemType.AUDIO;
+import static sample.ItemType.AUDIO_MOBILE;
+import static sample.ItemType.VISUAL;
+import static sample.ItemType.VISUAL_MOBILE;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
@@ -20,19 +29,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 /**
+ * This controller class runs the production program and utilizes the many coding practices learned
+ * in COP 3003.
+ *
  * @author Luis Hernandez
  * @brief Controller class for GUI project, holds all code to GUI and functions of the GUI system
  *     9/20/2019
@@ -71,7 +74,7 @@ public class Controller {
 
   @FXML private TableView<Product> tbvExProd;
 
-  @FXML private ListView<Product> chooseProdLSV;
+  @FXML private ListView<Product> chooseProdLV;
 
   @FXML private ComboBox<Integer> cbxQuantity;
 
@@ -103,7 +106,7 @@ public class Controller {
 
   @FXML private Label lblEmail;
 
-  @FXML private TextArea TAlogEmp;
+  @FXML private TextArea logEmpTA;
 
   private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
@@ -116,24 +119,24 @@ public class Controller {
   static final String JDBC_DRIVER = "org.h2.Driver"; // could be private but chose not to
   static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
 
-  /** Initialize the Database and add items to combobox setup GUI initial look */
+  /** Initialize the Database and add items to combobox setup GUI initial look. */
   public void initialize() throws IOException {
 
     //  Database credential
     stmt = null;
     conn = null;
 
-    final String USER = "";
-    final String PASS;
+    final String User = "";
+    final String Pass;
     try {
       Properties prop = new Properties();
       prop.load(new FileInputStream("res/properties"));
-      PASS = prop.getProperty("password");
+      Pass = prop.getProperty("password");
       // STEP 1: Register JDBC driver
       Class.forName(JDBC_DRIVER);
 
       // STEP 2: Open a connection
-      conn = DriverManager.getConnection(DB_URL, USER, PASS);
+      conn = DriverManager.getConnection(DB_URL, User, Pass);
       stmt = conn.createStatement();
 
       // Clean-up environment
@@ -153,6 +156,9 @@ public class Controller {
     }
   } // end initialize
   /**
+   * this will add the values inputted by user into the database to be then displayed in a table
+   * view.
+   *
    * @param event when the button is pressed it will add input to Product DB and then show the
    *     created products in table/list views for the user to see
    */
@@ -171,10 +177,15 @@ public class Controller {
 
     } catch (SQLException e) {
       e.printStackTrace();
+      conn.close();
     }
     loadProducts();
   } // end btnAddProduct
 
+  /**
+   * this populates the products from the database into the existing views before clickng on
+   * buttons.
+   */
   public void loadProducts() {
     try {
       String sql = "SELECT * FROM PRODUCT";
@@ -213,19 +224,23 @@ public class Controller {
         productLine.add(product);
       }
       tbvExProd.setItems(productLine);
-      chooseProdLSV.setItems(productLine);
+      chooseProdLV.setItems(productLine);
       txtFmanu.clear();
       txtFprodName.clear();
     } catch (SQLException e) {
       e.printStackTrace();
     }
   }
-  /** @param event this action records the product & sends it to the production log to see output */
+  /**
+   * take chosen product and record it into the log and database.
+   *
+   * @param event this action records the product & sends it to the production log to see output
+   */
   @FXML
   void btnRecordProduction(ActionEvent event) throws SQLException {
 
     productShow.clear();
-    Product theRecordedProd = chooseProdLSV.getSelectionModel().getSelectedItem();
+    Product theRecordedProd = chooseProdLV.getSelectionModel().getSelectedItem();
     ProductionRecord produce = new ProductionRecord(theRecordedProd, 0);
 
     String prodRec =
@@ -244,6 +259,7 @@ public class Controller {
 
     } catch (SQLException e) {
       e.printStackTrace();
+      conn.close();
     }
 
     String showProduction = "SELECT * FROM PRODUCTIONRECORD";
@@ -276,9 +292,15 @@ public class Controller {
     }
   } // end btnRecordProduction
 
+  /**
+   * creates employee based off inputted values.
+   *
+   * @param actionEvent - button press that gets inputs in text fields
+   * @throws SQLException - incase the database is not connected to accept a new employee object
+   */
   public void createEmployee(ActionEvent actionEvent) throws SQLException {
-    TAlogEmp.clear();
+    logEmpTA.clear();
     Employee emp = new Employee(txtfEmpName.getText(), txtfPassword.getText());
-    TAlogEmp.setText(emp.toString());
+    logEmpTA.setText(emp.toString());
   }
 }

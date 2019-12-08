@@ -3,15 +3,23 @@ package sample;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** @author Luis D. Hernandez 12/2/2019 */
+/**
+ * Employee class is used to help create employee objects in program that will allow a backlog to be
+ * traced back to certain users.
+ *
+ * @author Luis D. Hernandez 12/2/2019
+ */
 public class Employee {
 
   StringBuilder name;
   String username;
   String password;
   String email;
-
+  String encode;
   /**
+   * Constructor takes in name and password inputs to create the employee username, email, and set
+   * the name and password.
+   *
    * @param name - name provided by user to indicate themselves
    * @param password - character string to keep project integrity to user
    */
@@ -30,10 +38,14 @@ public class Employee {
     } else {
       this.password = "pw";
     }
-    reverseString(password);
+    encode = reverseString(password);
   }
 
-  /** @param name - uses name to setup a username for the project program */
+  /**
+   * Username is created by splitting the name inputted by user.
+   *
+   * @param name - uses name to setup a username for the project program
+   */
   private void setUsername(String name) {
 
     Pattern nameAfterSpace = Pattern.compile("\\s(.*)", Pattern.MULTILINE);
@@ -47,7 +59,9 @@ public class Employee {
   }
 
   /**
-   * @param name
+   * This method checks if the name has a space to be properly used in a String Builder.
+   *
+   * @param name the name provided by the user
    * @return a boolean variable that is true if username exists
    */
   private boolean checkName(String name) {
@@ -81,6 +95,11 @@ public class Employee {
     return found;
   }
 
+  /**
+   * Method that overrides the toString method to allow a desired output.
+   *
+   * @return the string value of the employee details such as username and email
+   */
   public String toString() {
     return "Employee Details\n"
         + "Name : "
@@ -93,13 +112,22 @@ public class Employee {
         + email
         + "\n"
         + "Initial Password : "
-        + password;
+        + password
+        + "\n"
+        + "Encoded Password :"
+        + encode;
   }
 
   public String getName() {
     return name.toString();
   }
 
+  /**
+   * Encrypts the password of the employee.
+   *
+   * @param id string value given by emp
+   * @return the value entered is reversed as to encrypt the password of the employee
+   */
   public String reverseString(String id) {
     // reverse emp pw to make it more safe
     if (id.length() == 1) {

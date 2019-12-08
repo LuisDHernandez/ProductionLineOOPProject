@@ -1,6 +1,8 @@
 package sample;
 
 /**
+ * Screen class that uses Screen Spec interface in order to apply variables to the object.
+ *
  * @author Luis Herenandez
  * @brief Screen object that contains the code to display a movie to movieplayers.
  */
@@ -12,6 +14,9 @@ public class Screen implements ScreenSpec {
   private int responseTime;
 
   /**
+   * Constructor that uses resolution, refresh rate, and response times to create a new object
+   * description.
+   *
    * @param theResolution - resolution of the screen
    * @param theRefreshRate - time it takes to update screen with next part of movie
    * @param theResponseTime - the speed the screen react to inputs and displaying of the movie
@@ -22,7 +27,11 @@ public class Screen implements ScreenSpec {
     responseTime = theResponseTime;
   }
 
-  /** @return string that contains the screen resolution,refresh, and response times */
+  /**
+   * Overrides the toString method to allow a desired output.
+   *
+   * @return string that contains the screen resolution,refresh, and response times
+   */
   public String toString() {
 
     return "Screen:"
@@ -34,7 +43,7 @@ public class Screen implements ScreenSpec {
         + responseTime;
   }
 
-  /** ACCESSOR METHODS* */
+  /** ACCESSOR METHODS.* */
   @Override
   public String getResolution() {
     return resolution;
