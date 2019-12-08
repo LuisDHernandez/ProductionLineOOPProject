@@ -5,7 +5,6 @@ package sample;
  * movie player.
  *
  * @author Luis Hernandez
- * @brief object class that can play visuals and implements multimedia control and extends product.
  */
 public class MoviePlayer extends Product implements MultimediaControl {
 

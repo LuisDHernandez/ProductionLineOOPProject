@@ -5,8 +5,6 @@ package sample;
  * of the program.
  *
  * @author Luis D. Hernandez
- * @brief abstract class that is used as a basis for all objects and integrates database
- *     functionality with program 9/30/2019
  */
 public abstract class Product implements Item {
 

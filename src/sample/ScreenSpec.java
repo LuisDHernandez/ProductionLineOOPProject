@@ -4,8 +4,6 @@ package sample;
  * Interface that sets what methods need to be included in a class.
  *
  * @author Luis Hernandez
- * @brief interface that forces screen.java to have getter methods for resolution,refresh, and
- *     response times
  */
 public interface ScreenSpec {
 

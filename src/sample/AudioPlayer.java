@@ -4,8 +4,6 @@ package sample;
  * Audio player class represents a Product object that can play audio.
  *
  * @author Luis Hernandez
- * @brief AudioPlayer product that can play music and implements MultimediaControl and extends
- *     Product
  */
 public class AudioPlayer extends Product implements MultimediaControl {
 

@@ -4,8 +4,6 @@ package sample;
  * Item interface defines what method needs to be implemented by the classes that use it.
  *
  * @author Luis D. Hernandez
- * @brief Interface that forces item objects to have getters and setters for name, manufacturer, and
- *     id 9/30/2019
  */
 public interface Item {
 

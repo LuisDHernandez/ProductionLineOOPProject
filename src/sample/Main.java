@@ -16,7 +16,6 @@ public class Main extends Application {
   /**
    * The start method is the starting point of a JavaFX program. This start method sets the title.
    *
-   * @brief This program will help manage product creation in a backend view for an organization
    * @author Luis Hernandez
    * @param primaryStage Set the GUI program to be viewed
    * @throws Exception throw an exception that would cause the code to crash

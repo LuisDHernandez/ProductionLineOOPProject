@@ -4,7 +4,6 @@ package sample;
  * Screen class that uses Screen Spec interface in order to apply variables to the object.
  *
  * @author Luis Herenandez
- * @brief Screen object that contains the code to display a movie to movieplayers.
  */
 public class Screen implements ScreenSpec {
 

@@ -36,9 +36,7 @@ import javafx.scene.layout.GridPane;
  * This controller class runs the production program and utilizes the many coding practices learned
  * in COP 3003.
  *
- * @author Luis Hernandez
- * @brief Controller class for GUI project, holds all code to GUI and functions of the GUI system
- *     9/20/2019
+ * @author Luis Hernandez 9/20/2019
  */
 public class Controller {
 
