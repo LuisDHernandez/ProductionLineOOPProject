@@ -1,9 +1,14 @@
 package sample;
 
 import static sample.ItemType.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -112,18 +117,23 @@ public class Controller {
   static final String DB_URL = "jdbc:h2:./res/ProdLineDB"; // could be private but chose not to
 
   /** Initialize the Database and add items to combobox setup GUI initial look */
-  public void initialize() throws SQLException {
+  public void initialize() throws IOException {
 
     //  Database credential
     stmt = null;
     conn = null;
 
+    final String USER = "";
+    final String PASS;
     try {
+      Properties prop = new Properties();
+      prop.load(new FileInputStream("res/properties"));
+      PASS = prop.getProperty("password");
       // STEP 1: Register JDBC driver
       Class.forName(JDBC_DRIVER);
 
       // STEP 2: Open a connection
-      conn = DriverManager.getConnection(DB_URL);
+      conn = DriverManager.getConnection(DB_URL, USER, PASS);
       stmt = conn.createStatement();
 
       // Clean-up environment

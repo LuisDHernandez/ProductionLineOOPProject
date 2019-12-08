@@ -30,7 +30,7 @@ public class Employee {
     } else {
       this.password = "pw";
     }
-    reverseString(password);
+    String encode = reverseString(password);
   }
 
   /** @param name - uses name to setup a username for the project program */
@@ -98,14 +98,6 @@ public class Employee {
 
   public String getName() {
     return name.toString();
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public String getEmail() {
-    return email;
   }
 
   public String reverseString(String id) {
