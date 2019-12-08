@@ -30,7 +30,7 @@ public class Employee {
     } else {
       this.password = "pw";
     }
-    String encode = reverseString(password);
+    reverseString(password);
   }
 
   /** @param name - uses name to setup a username for the project program */
